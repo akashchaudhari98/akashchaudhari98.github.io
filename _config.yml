@@ -1,6 +1,7 @@
 #
 # This file contains configuration flags to customize your site
 #
+theme: jekyll-theme-midnight
 
 # Name of your site (displayed in the header)
 name: Akash Chaudhari 2
@@ -52,7 +53,6 @@ baseurl: ""
 #
 # !! You don't need to change any of the configuration flags below !!
 #
-theme: jekyll-theme-midnight
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
