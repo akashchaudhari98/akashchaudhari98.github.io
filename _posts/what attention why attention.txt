@@ -1,0 +1,20 @@
+what attention why attention 
+
+Aim of this article is to - 
+1 understand attention networks 
+2 look at the math behind attention networks 
+3 figure out why we need attention networks
+4 look at the results obtained with attention vs normal lstms/encoder decoder networks 
+
+Introduction - 
+
+imagine you are at a super-market and looking to buy some cereals , how do you go about it ? do you 
+look at all the items in the store all at once ? no you don't , you find the shelf for cereals and look only at them 
+while ignoring rest of the items in the store in other words you pay attention to the cerels shelf 
+Attention networks do something similar with help of deep learning in NLP 
+
+the concept was introduced in the paper ______________ for neural machine translation, before looking at it in detail lets in short look at what was used before this 
+
+Encoder-decoder architechture 
+
+NMT was orignaly based on the encoder decoder architechture (introduced in this paper) 
