@@ -8,7 +8,7 @@ Aim of this article is to -
 
 Introduction - 
 
-imagine you are at a super-market and looking to buy some cereals , how do you go about it ? do you 
+Imagine you are at a super-market and looking to buy some cereals , how do you go about it ? do you 
 look at all the items in the store all at once ? no you don't , you find the shelf for cereals and look only at them 
 while ignoring rest of the items in the store in other words you pay attention to the cerels shelf 
 Attention networks do something similar with help of deep learning in NLP 
@@ -17,4 +17,31 @@ the concept was introduced in the paper ______________ for neural machine transl
 
 Encoder-decoder architechture 
 
-NMT was orignaly based on the encoder decoder architechture (introduced in this paper) 
+NMT was orignaly based on the seq2seq encoder decoder architechture (introduced in this paper) , this architecture had 3 important parts , the encoder , the context vector and the decoder 
+the encoder is an RNN( or an LSTM/RNN) that takes in the input sequence and converts it into an context vector 
+the context vector is passed on to the decoder 
+the decoder decodes this context vector to give an output sequence
+
+Encoder 
+
+Stack of several RNN(or lstm gru for better performance) accepts single elements from the input and the previos hidden state, collects information from the input and passes on the hidden state to the next lstm 
+the hidden states are computed as follows 
+
+	h_i = f(W_hh*h_t-1,W_hx*xt)   (incase of RNN)
+	W_hh are the weights associate with the previous input state and W_hx are the weights associated with present input sequence
+
+	F_t = sig(W_f.[h_t-1,x_t] + b_f) 		(incase of lstm) ( )
+
+
+Decoder 
+
+Stack of several RNN(or LSTM/GRU) cells , it accepts the last hidden state of the encoder as the context vector and cell state of the last encoder cell as the initial values and predicts the output sequence 
+
+		y_t = argmax(softmax(g(LSTM(e))))
+
+Drawbacks of seq2seq model 
+
+1) the encoder decoder network needs to compress all the information from the source sentence into a single foxed length vector this can create a problem in long senteces and sentences that are bigger than the sentences in the training corpus 
+2) 
+
+ 
