@@ -1,9 +1,10 @@
 
 
+---
 
 ## Introduction - 
 
-Imagine you are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
+Imagine you<sub>2</sub> are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
 while ignoring the rest of the items in the store in other words you pay attention to the cereals shelf 
 Attention networks do something similar with the help of deep learning in NLP 
 
@@ -25,9 +26,8 @@ the hidden states are computed as follows
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" title="\large h_t = f(W_h_h.h_t_{-1},W_h_x.x_t)" /></a>                               
                              [image source] (https://smerity.com/articles/2016/google_nmt_arch.html)
                        
-
-    W_hh are the weights associate with the previous input state 
-    W_hx are the weights associated with the present input sequence
+   W_hh are the weights associate with the previous input state 
+   W_hx are the weights associated with the present input sequence
 
     
 ![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
