@@ -21,7 +21,6 @@ the decoder decodes this context vector to give an output sequence
 Stack of several RNN(or LSTM/GRU for better performance) accepts single elements from the input and the previous hidden state, collects information from the input and passes on the hidden state to the next lstm 
 the hidden states are computed as follows 
 
-    h_i = f(W_hh*h_t-1,W_hx*xt)   (incase of RNN)
     
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" title="\large h_t = f(W_h_h.h_t_{-1},W_h_x.x_t)" /></a>                                (incase of RNN)
 
@@ -29,6 +28,8 @@ the hidden states are computed as follows
     W_hx are the weights associated with the present input sequence
 
 	F_t = sig(W_f.[h_t-1,x_t] + b_f) 		(incase of lstm) ( )
+    
+![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
 
 image - https://smerity.com/articles/2016/google_nmt_arch.html
 
