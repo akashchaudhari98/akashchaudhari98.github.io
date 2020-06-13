@@ -177,7 +177,7 @@ It would be best to discuss self-attention in the next post along with transform
 	
 
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=1%2Bsin%28mc%5E2%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+![equation](http://www.sciweavers.org/tex2img.php?eq=%20%5Cwidetilde%7Bab%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" \widetilde{ab} " width="28" height="21" /)
 
 
 
