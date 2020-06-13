@@ -22,6 +22,7 @@ Stack of several RNN(or LSTM/GRU for better performance) accepts single elements
 the hidden states are computed as follows 
 
 	h_i = f(W_hh*h_t-1,W_hx*xt)   (incase of RNN)
+    
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\huge&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\huge&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" title="\huge h_t = f(W_h_h.h_t_{-1},W_h_x.x_t)" /></a>      (incase of RNN)
 
 	W_hh are the weights associate with the previous input state 
