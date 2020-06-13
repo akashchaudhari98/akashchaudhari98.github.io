@@ -176,4 +176,4 @@ At the sentence level, we repeat the same procedure but with s_i as input to the
 It would be best to discuss self-attention in the next post along with transformers
 	
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\int&space;\bigcup&space;\left&space;\|&space;\right&space;\|" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\int&space;\bigcup&space;\left&space;\|&space;\right&space;\|" title="\int \bigcup \left \| \right \|" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\int&space;\bigcup&space;\left&space;\|&space;\sqrt{\sqrt{\kappa&space;}}&space;\right&space;\|" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\int&space;\bigcup&space;\left&space;\|&space;\sqrt{\sqrt{\kappa&space;}}&space;\right&space;\|" title="\int \bigcup \left \| \sqrt{\sqrt{\kappa }} \right \|" /></a>
