@@ -51,7 +51,7 @@ Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the
 
 ## Attention mechanism 
 
-![image](https://miro.medium.com/max/1332/0*VrRTrruwf2BtW4t5)
+![image](https://miro.medium.com/max/1332/0*VrRTrruwf2BtW4t5.)
 
 (bahadanu attn)
 
@@ -188,13 +188,12 @@ to favor points near p_t a Gaussian distribution is centered around p_t
 ## Hierarchical Attention
 
 ![image](https://humboldt-wi.github.io/blog/img/seminar/group5_HAN/han_architecture.jpg)
+
 This model is mostly used for applications such as document classification, it has a hierarchical structure which mirrors
 the Hierarchical structure of the model has two levels of attention mechanisms that are applied at word level and sentence level enabling it to more and less important content when constructing document representation. 
-
-if we think of a document it has a nested structure which is as follows 
+If we think of a document it has a nested structure which is as follows 
 
 character > word > sentence > document
-
 
 a hierarchical structure is constructed accordingly either from the doc to char ( top-bottom) or the other way round (bottom-up).
 The network constructs the document representation by building representations of sentences and then aggregating those into a document representation.
