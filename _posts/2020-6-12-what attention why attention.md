@@ -3,13 +3,12 @@
 ---
 
 ## Introduction - 
-This is some <sup>superscript</sup> text.
 
 Imagine you are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
 while ignoring the rest of the items in the store in other words you pay attention to the cereals shelf 
 Attention networks do something similar with the help of deep learning in NLP 
 
-the concept was introduced in the paper ______________ for neural machine translation, before looking at it in detail lets take a short look at what was used before this 
+the concept was introduced in the [paper](https://arxiv.org/pdf/1409.0473.pdf)  for neural machine translation, before looking at it in detail lets take a short look at what was used before this 
 
 ### Encoder-decoder architechture 
 
@@ -19,8 +18,6 @@ the context vector is passed on to the decoder
 the decoder decodes this context vector to give an output sequence
 
 ![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
-
-
 
 #### Encoder 
 
@@ -55,7 +52,7 @@ Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the
 
 (bahadanu attn)
 
-Aiming to resolve the above issues the attention mechanism was introduced in the paper _______, it maintains the same RNN encoder, but for each time-step, it computes an attention score for the hidden representations of each token.
+Aiming to resolve the above issues the attention mechanism was introduced in the [paper](https://arxiv.org/abs/1409.3215), it maintains the same RNN encoder, but for each time-step, it computes an attention score for the hidden representations of each token.
 Let the inputs be x and outputs be y 
 		
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;x&space;=&space;[x_1&space;,&space;x_2&space;,...,x_n]" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;x&space;=&space;[x_1&space;,&space;x_2&space;,...,x_n]" title="\large x = [x_1 , x_2 ,...,x_n]" /></a>
@@ -232,6 +229,9 @@ It would be best to discuss self-attention in the next post along with transform
 
 ## Refrences
 
-[Attention ? Attention !](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html#definition)
-[NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](https://arxiv.org/pdf/1409.0473.pdf)
-[Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)
+[Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215)</br>
+[Attention ? Attention !](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html#definition)<br>
+[An Introductory Survey on Attention Mechanisms in NLP Problems](https://arxiv.org/abs/1811.05544)</br>
+[NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](https://arxiv.org/pdf/1409.0473.pdf)<br>
+[Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)<br>
+[Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)</br>
