@@ -1,0 +1,186 @@
+what attention why attention 
+
+Aim of this article is to - 
+1 understand attention networks 
+2 look at the math behind attention networks 
+3 figure out why we need attention networks
+4 look at the results obtained with attention vs normal lstms/encoder-decoder networks 
+
+Introduction - 
+
+Imagine you are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
+while ignoring the rest of the items in the store in other words you pay attention to the cereals shelf 
+Attention networks do something similar with the help of deep learning in NLP 
+
+the concept was introduced in the paper ______________ for neural machine translation, before looking at it in detail lets take a short look at what was used before this 
+
+Encoder-decoder architechture 
+
+NMT was originally based on the seq2seq encoder-decoder architecture (introduced in this paper), this architecture had 3 important parts, the encoder, the context vector, and the decoder 
+the encoder is an RNN( or an LSTM/RNN) that takes in the input sequence and converts it into a context vector 
+the context vector is passed on to the decoder 
+the decoder decodes this context vector to give an output sequence
+
+Encoder 
+
+Stack of several RNN(or LSTM/GRU for better performance) accepts single elements from the input and the previous hidden state, collects information from the input and passes on the hidden state to the next lstm 
+the hidden states are computed as follows 
+
+	h_i = f(W_hh*h_t-1,W_hx*xt)   (incase of RNN)
+
+	W_hh are the weights associate with the previous input state 
+    W_hx are the weights associated with the present input sequence
+
+	F_t = sig(W_f.[h_t-1,x_t] + b_f) 		(incase of lstm) ( )
+
+image - https://smerity.com/articles/2016/google_nmt_arch.html
+
+Decoder 
+
+Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the encoder as the context vector and cell state of the last encoder cell as the initial values and predicts the output sequence 
+
+		y_t = argmax(softmax(g(LSTM(e))))
+
+Drawbacks of seq2seq model 
+
+1) the encoder-decoder network needs to compress all the information from the source sentence into a single foxed length vector this can create a problem in long sentences and sentences that are bigger than the sentences in the training corpus 
+
+2) It does not take into account the amount of individual contribution of a word into consideration, attention, on the other hand, understands which words to focus during an individual time-step
+
+
+Attention mechanism 
+
+(bahadanu attn)
+
+Aiming to resolve the above issues the attention mechanism was introduced in the paper _____________________, it maintains the same RNN encoder, but for each time-step, it computes an attention score for the hidden representations of each token.
+Let the inputs be x and outputs be y 
+		
+		 x = [x_1 , x_2 ...x_n]
+		 y = [y_1 , y_2 ...y_n]
+we will be usinng bi-directional encoder , which read the sentence left to right as well as right to left , this to to include both the preceding as well as following words in annotation of one word
+		 
+		 forward hidden state = h_i->
+		 backward hidden state = h_i<-
+
+		 source hidden state = h_i =  [h_i->;h_i<-]  , i = [1,2,..n]
+
+
+
+In this model, conditional probability is defined as follows 
+
+		P(y_t|y1.....y_t-1 , x) = g(y_t-1,s_t,c_t)
+
+here g is a fully connected layer with non-linear activation and takes all the shows inputs as contactanated, s_i is the 
+decoder hidden state for time-step i and is computed as 
+
+		s_t = f(s_t-1,y_t-1,c_t)       (f is an RNN/LSTM function)
+
+c_i is the context vector which is computed for each time step using attention scores, which are calculated using an alignment model to score how well inputs at position i and outputs at position j match 
+ 
+		e_it = a(s_t-1,h_i) 
+
+		α_it = 	e_it/∑(e_it)	(softmax for score normalisation) 
+
+In Bahdanau’s paper, the alignment score  a() is parametrized by a feed-forward network, with a single hidden layer and this network is jointly trained with other parts of the model	
+		
+		a = V_a.tanh(W_a[h_i:s_t])   (fully connected layer , inputs are concatanated hidden state of bidirection encoder and 																							last hidden state of decoder)
+
+		c_t = ∑ (α_it.h_i)
+
+c_t (context vector ) is a weighted average of the elements in the source sentence, it denotes the sentence representation concerning the current element h_j(out) and the similarity score e_ij, context vector is then combined with the current hidden state and the last target token y_t-1 to generate the current token y_j
+
+		y_t = f(s_t-1 ,y_t-1 , c_t)
+
+		where s_t-1 = f(h_t-1,y_t-1)
+
+This procedure is repeated for each token y_t until the end of the output sequence 
+
+Attention score can be calculated in multiple ways, here are some popular attention score mechanisms 
+
+
+Global attention 
+
+The idea of a global attention model is to consider all hidden states of encoder while deriving the context vector c_t, here the score is determined by comparing the current hidden state with each source hidden state
+
+		e_it = score(h_t,h`_s)
+
+		α_it = 	e_it/∑(e_it)  (softmax for score normalisation)
+
+there are three ways of calculating scores 
+
+		score = h_t^T.h`_s   		   (dot)
+
+		score = h_t^T.W_a.h`_s 		   (general)
+
+		score = V_a.tanh(W_a[h_t:h_s]) (concat)
+
+In spirit global attention is similar to bahdanau attention which we discussed before but there are certain differences between the two, while bahadanu using a concatenation of the forward and backward encoder stats with the previous hidden state of the target sequence, global attention simply uses the top hidden state of the encoder and decoder LSTM.
+
+
+Local Attention 
+
+It selectively focuses on a small window of context and is differentiable, first the model generates an "aligned position" p_t for each target word at time t, the context vector c_t is then derived as a weighted average over a set of encoder hidden states within the window (p_t - D, p_t + D) here D is empirically selected, if the window crosses sentence boundaries then we simply ignore the outside part and focus on the words inside the window
+
+local attention model has two variants 
+
+monotonic alignment - here the position vector p_t is set to p_t = t, assuming the source sentence and target sentence are monotonically aligned, the alignment is calculated as 
+
+		α_it = align(h_t,h`_t) = softmax(score(h_t,h`_t))
+
+monotonic alignment is nearly the same as global attention, except that vector α_it is of fixed length and shorter
+
+predictive alignment - unlike monotonic alignment here we do not assume the value of p_t we predict using the following equation
+
+		p_t = S.sigmoid(v_p^T.tanh(W_ph_t))
+
+		W_p and v_p are model parameters that are trained along with the rest of the model 
+		S is the length of the source sequence
+		since we have added sigmoid the range of p_t is [0, S]
+
+the alignment is calculated as follows 
+
+		α_it = align(h_t,h`_t)*exp(-(s-p_t)^2/2sd^2)
+
+to favor points near p_t a Gaussian distribution is centered around p_t 
+
+
+Hierarchical Attention
+
+This model is mostly used for applications such as document classification, it has a hierarchical structure which mirrors
+the Hierarchical structure of the model has two levels of attention mechanisms that are applied at word level and sentence level enabling it to more and less important content when constructing document representation. 
+
+if we think of a document it has a nested structure which is as follows 
+
+		character 2 word 2 sentence 2 document
+
+
+a hierarchical structure is constructed accordingly either from the doc -> char ( top-bottom) or the other way round (bottom-up).
+The network constructs the document representation by building representations of sentences and then aggregating those into a document representation.
+the sentence representations are built by encoding the words in the sentence and applying attention mechanism on them resulting in a sentence representation the document representation is built in the same manner, but it only receives the sentence vector as input.
+
+At word level we use bidirectional GRU as RNN cells, this gives us word annotations which summarizes information form the backward as well as forward direction resulting in a variable h_it 
+
+		h_it = [h_it-> ;h_it <-]
+
+We then apply the attention mechanism as we did in before 
+		
+		e_it = score(h_it)	= tanh(W_w.h_it + b_w) 
+		we use tanh to keep the values between [-1 , 1]
+
+		α_it = softmax(tanh(W_w.h_it + b_w)) = exp(tanh(W_w.h_it + b_w)) / ∑(exp(tanh(W_w.h_it + b_w)))
+
+		s_i = ∑ (α_it.h_it)
+
+At the sentence level, we repeat the same procedure but with s_i as input to the bidirectional GRU cells
+
+		v = ∑ (α_i.h_i)
+
+
+Self Attention 
+
+It would be best to discuss self-attention in the next post along with transformers
+	
+
+
+
+
