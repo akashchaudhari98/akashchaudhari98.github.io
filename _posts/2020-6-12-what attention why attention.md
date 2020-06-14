@@ -56,14 +56,17 @@ Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the
 Aiming to resolve the above issues the attention mechanism was introduced in the paper _______, it maintains the same RNN encoder, but for each time-step, it computes an attention score for the hidden representations of each token.
 Let the inputs be x and outputs be y 
 		
-		 x = [x_1 , x_2 ...x_n]
-		 y = [y_1 , y_2 ...y_n]
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;x&space;=&space;[x_1&space;,&space;x_2&space;,...,x_n]" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;x&space;=&space;[x_1&space;,&space;x_2&space;,...,x_n]" title="\large x = [x_1 , x_2 ,...,x_n]" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;y&space;=&space;[y_1&space;,&space;y_2&space;,...,y_n]" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;y&space;=&space;[y_1&space;,&space;y_2&space;,...,y_n]" title="\large y = [y_1 , y_2 ,...,y_n]" /></a>
+
 we will be usinng bi-directional encoder , which read the sentence left to right as well as right to left , this to to include both the preceding as well as following words in annotation of one word
 		 
-		 forward hidden state = h_i->
-		 backward hidden state = h_i<-
+forward hidden state = <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\overrightarrow{h_i}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\overrightarrow{h_i}" title="\large \overrightarrow{h_i}" /></a>
 
-		 source hidden state = h_i =  [h_i->;h_i<-]  , i = [1,2,..n]
+backward hidden state = <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\overleftarrow{h_i}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\overleftarrow{h_i}" title="\large \overleftarrow{h_i}" /></a>
+
+source hidden state = <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;h_i&space;=&space;[\overrightarrow{h_i}:\overleftarrow{h_i}],&space;\hspace{1cm}&space;i&space;=&space;[1,2,...n]" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;h_i&space;=&space;[\overrightarrow{h_i}:\overleftarrow{h_i}],&space;\hspace{1cm}&space;i&space;=&space;[1,2,...n]" title="\large h_i = [\overrightarrow{h_i}:\overleftarrow{h_i}], \hspace{1cm} i = [1,2,...n]" /></a>
 
 
 
