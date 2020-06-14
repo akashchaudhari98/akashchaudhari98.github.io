@@ -229,9 +229,9 @@ It would be best to discuss self-attention in the next post along with transform
 
 ## Refrences
 
-[Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215)</br>
+[Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215)<br>
 [Attention ? Attention !](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html#definition)<br>
-[An Introductory Survey on Attention Mechanisms in NLP Problems](https://arxiv.org/abs/1811.05544)</br>
+[An Introductory Survey on Attention Mechanisms in NLP Problems](https://arxiv.org/abs/1811.05544)<br>
 [NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](https://arxiv.org/pdf/1409.0473.pdf)<br>
 [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)<br>
-[Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)</br>
+[Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)<br>
