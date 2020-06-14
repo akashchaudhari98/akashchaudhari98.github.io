@@ -3,6 +3,7 @@
 ---
 
 ## Introduction - 
+This is some <sup>superscript</sup> text.
 
 Imagine you are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
 while ignoring the rest of the items in the store in other words you pay attention to the cereals shelf 
