@@ -18,7 +18,7 @@ the context vector is passed on to the decoder
 the decoder decodes this context vector to give an output sequence
 
 ![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
-[image source](https://smerity.com/articles/2016/google_nmt_arch.html)
+<sub>[image source](https://smerity.com/articles/2016/google_nmt_arch.html)</sub>
 
 
 #### Encoder 
@@ -32,16 +32,11 @@ the hidden states are computed as follows
    W_hh are the weights associate with the previous input state <br>
    W_hx are the weights associated with the present input sequence
 
-    
-
-
-image - https://smerity.com/articles/2016/google_nmt_arch.html
 
 #### Decoder 
 
 Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the encoder as the context vector and cell state of the last encoder cell as the initial values and predicts the output sequence 
 
-y_t = argmax(softmax(g(LSTM(e))))
         
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;y_t&space;=&space;argmax(softmax(G(LSTM(e))))" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;y_t&space;=&space;argmax(softmax(G(LSTM(e))))" title="\large y_t = argmax(softmax(G(LSTM(e))))" /></a>
 
