@@ -51,7 +51,7 @@ Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the
 
 ## Attention mechanism 
 
-![image](https://miro.medium.com/max/1332/0*VrRTrruwf2BtW4t5.)
+![image](https://miro.medium.com/max/1332/0*VrRTrruwf2BtW4t5)
 
 (bahadanu attn)
 
@@ -120,6 +120,7 @@ Attention score can be calculated in multiple ways, here are some popular attent
 
 
 ## Global attention 
+![image](https://miro.medium.com/max/602/1*WmXfpYa_aIOMYTavmFW4aw.png)
 
 The idea of a global attention model is to consider all hidden states of encoder while deriving the context vector c_t, here the score is determined by comparing the current hidden state with each source hidden state
 
@@ -153,6 +154,9 @@ In spirit global attention is similar to bahdanau attention which we discussed b
 
 ## Local Attention 
 
+![image](https://miro.medium.com/max/600/1*rcHVQN4QGwNWBOs69QeJsg.png)
+
+
 It selectively focuses on a small window of context and is differentiable, first the model generates an "aligned position" p_t for each target word at time t, the context vector c_t is then derived as a weighted average over a set of encoder hidden states within the window (p_t - D, p_t + D) here D is empirically selected, if the window crosses sentence boundaries then we simply ignore the outside part and focus on the words inside the window
 
 local attention model has two variants 
@@ -183,6 +187,7 @@ to favor points near p_t a Gaussian distribution is centered around p_t
 
 ## Hierarchical Attention
 
+![image](https://humboldt-wi.github.io/blog/img/seminar/group5_HAN/han_architecture.jpg)
 This model is mostly used for applications such as document classification, it has a hierarchical structure which mirrors
 the Hierarchical structure of the model has two levels of attention mechanisms that are applied at word level and sentence level enabling it to more and less important content when constructing document representation. 
 
