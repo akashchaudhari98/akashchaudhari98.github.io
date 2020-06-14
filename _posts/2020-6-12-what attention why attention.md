@@ -4,7 +4,7 @@
 
 ## Introduction - 
 
-Imagine you<sub>2</sub> are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
+    Imagine you1qb <sub>2</sub> are at a super-market and looking to buy some cereals, how do you go about it ? do you look at all the items in the store all at once? no, you don't, you find the shelf for cereals and look only at them 
 while ignoring the rest of the items in the store in other words you pay attention to the cereals shelf 
 Attention networks do something similar with the help of deep learning in NLP 
 
@@ -17,6 +17,10 @@ the encoder is an RNN( or an LSTM/RNN) that takes in the input sequence and conv
 the context vector is passed on to the decoder 
 the decoder decodes this context vector to give an output sequence
 
+![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
+[image source] (https://smerity.com/articles/2016/google_nmt_arch.html)
+
+
 #### Encoder 
 
 Stack of several RNN(or LSTM/GRU for better performance) accepts single elements from the input and the previous hidden state, collects information from the input and passes on the hidden state to the next lstm 
@@ -24,13 +28,12 @@ the hidden states are computed as follows
 
     
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" title="\large h_t = f(W_h_h.h_t_{-1},W_h_x.x_t)" /></a>                               
-                             [image source] (https://smerity.com/articles/2016/google_nmt_arch.html)
                        
-   W_hh are the weights associate with the previous input state 
+   W_hh are the weights associate with the previous input state <b>
    W_hx are the weights associated with the present input sequence
 
     
-![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
+
 
 image - https://smerity.com/articles/2016/google_nmt_arch.html
 
@@ -38,7 +41,10 @@ image - https://smerity.com/articles/2016/google_nmt_arch.html
 
 Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the encoder as the context vector and cell state of the last encoder cell as the initial values and predicts the output sequence 
 
-		y_t = argmax(softmax(g(LSTM(e))))
+y_t = argmax(softmax(g(LSTM(e))))
+        
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;y_t&space;=&space;argmax(softmax(G(LSTM(e))))" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;y_t&space;=&space;argmax(softmax(G(LSTM(e))))" title="\large y_t = argmax(softmax(G(LSTM(e))))" /></a>
+
 
 ### Drawbacks of seq2seq model 
 
