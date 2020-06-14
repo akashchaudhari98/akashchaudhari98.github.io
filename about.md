@@ -4,12 +4,15 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Hi , I am Akash Chaudhari , I am a NLP engineer based in mumbai 
+I enjoy working with AI/ML algorithms and also computer networking , if you ever have any intresting project idea or would like to have a brainstorming session feel free to contact me at the email address below
 
-### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[akashchaudhari726@gmail.com](mailto:email@domain.com)
+
+
+PS :I am currently looking for job oppertunities in NLP , if you like my work do contact me 
