@@ -51,6 +51,8 @@ Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the
 
 ## Attention mechanism 
 
+![image](https://miro.medium.com/max/1332/0*VrRTrruwf2BtW4t5.)
+
 (bahadanu attn)
 
 Aiming to resolve the above issues the attention mechanism was introduced in the paper _______, it maintains the same RNN encoder, but for each time-step, it computes an attention score for the hidden representations of each token.
