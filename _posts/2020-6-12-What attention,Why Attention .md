@@ -210,8 +210,7 @@ We then apply the attention mechanism as we did in before
 we use tanh to keep the values between [-1 , 1]
 
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;softmax(tanh(W_w.h_i_t&space;&plus;&space;b_w))&space;=&space;e^{\frac{tanh(W_w.h_it&space;&plus;&space;b_w))}{\sum&space;e^{tanh(W_w.h_it&space;&plus;&space;b_w}}}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;softmax(tanh(W_w.h_i_t&space;&plus;&space;b_w))&space;=&space;e^{\frac{tanh(W_w.h_it&space;&plus;&space;b_w))}{\sum&space;e^{tanh(W_w.h_it&space;&plus;&space;b_w}}}" title="\large \alpha _i_t = softmax(tanh(W_w.h_i_t + b_w)) = e^{\frac{tanh(W_w.h_it + b_w))}{\sum e^{tanh(W_w.h_it + b_w}}}" /></a>
-
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;softmax(tanh(W_w.h_i_t&space;&plus;&space;b_w))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;softmax(tanh(W_w.h_i_t&space;&plus;&space;b_w))" title="\large \alpha _i_t = softmax(tanh(W_w.h_i_t + b_w))" /></a>
 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;s_i&space;=&space;\sum&space;(\alpha&space;_i_t.h_i_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;s_i&space;=&space;\sum&space;(\alpha&space;_i_t.h_i_t)" title="\large s_i = \sum (\alpha _i_t.h_i_t)" /></a>
