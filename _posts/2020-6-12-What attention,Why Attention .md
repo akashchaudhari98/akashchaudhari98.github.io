@@ -221,10 +221,8 @@ At the sentence level, we repeat the same procedure but with s_i as input to the
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;v&space;=&space;\sum&space;(\alpha&space;_i.h_i)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;v&space;=&space;\sum&space;(\alpha&space;_i.h_i)" title="\large v = \sum (\alpha _i.h_i)" /></a>
 
-
-## Self Attention 
-
-It would be best to discuss self-attention in the next post along with transformers
+Trainable weights and biases are randomly initialized and jointly learned during the training process.
+The final output is a document vector v which can be used as features for document classification.
 	
 
 ## Refrences
@@ -235,3 +233,4 @@ It would be best to discuss self-attention in the next post along with transform
 [NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](https://arxiv.org/pdf/1409.0473.pdf)<br>
 [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)<br>
 [Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)<br>
+[Text Classification with Hierarchical Attention Networks](https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/)<br>
