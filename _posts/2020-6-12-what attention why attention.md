@@ -44,7 +44,7 @@ Stack of several RNN(or LSTM/GRU) cells, it accepts the last hidden state of the
 
 ### Drawbacks of seq2seq model 
 
-1) the encoder-decoder network needs to compress all the information from the source sentence into a single foxed length vector this can create a problem in long sentences and sentences that are bigger than the sentences in the training corpus 
+1) The encoder-decoder network needs to compress all the information from the source sentence into a single foxed length vector this can create a problem in long sentences and sentences that are bigger than the sentences in the training corpus 
 
 2) It does not take into account the amount of individual contribution of a word into consideration, attention, on the other hand, understands which words to focus during an individual time-step
 
@@ -60,7 +60,7 @@ Let the inputs be x and outputs be y
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;y&space;=&space;[y_1&space;,&space;y_2&space;,...,y_n]" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;y&space;=&space;[y_1&space;,&space;y_2&space;,...,y_n]" title="\large y = [y_1 , y_2 ,...,y_n]" /></a>
 
-we will be usinng bi-directional encoder , which read the sentence left to right as well as right to left , this to to include both the preceding as well as following words in annotation of one word
+We will be usinng bi-directional encoder , which read the sentence left to right as well as right to left , this to to include both the preceding as well as following words in annotation of one word
 		 
 forward hidden state = <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\overrightarrow{h_i}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\overrightarrow{h_i}" title="\large \overrightarrow{h_i}" /></a>
 
@@ -72,7 +72,6 @@ source hidden state = <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_ph
 
 In this model, conditional probability is defined as follows 
 
-		P(y_t|y1.....y_t-1 , x) = g(y_t-1,s_t,c_t)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;P(y_t|y_1.....y_t_{-1}&space;,&space;x)&space;=&space;g(y_t_{-1},s_t,c_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;P(y_t|y_1.....y_t_{-1}&space;,&space;x)&space;=&space;g(y_t_{-1},s_t,c_t)" title="\large P(y_t|y_1.....y_t_{-1} , x) = g(y_t_{-1},s_t,c_t)" /></a>
 
@@ -83,11 +82,9 @@ decoder hidden state for time-step i and is computed as
 
 c_i is the context vector which is computed for each time step using attention scores, which are calculated using an alignment model to score how well inputs at position i and outputs at position j match 
  
-		e_it = a(s_t-1,h_i) 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;e_i_t&space;=&space;a(s_t_{-1},h_i)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;e_i_t&space;=&space;a(s_t_{-1},h_i)" title="\large e_i_t = a(s_t_{-1},h_i)" /></a>
 
-		α_it = 	e_it/∑(e_it)	(softmax for score normalisation) 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha_i_t&space;=&space;\frac{e_i_t}{\sum_{i&space;=1}^{n}(e_i_t)}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\alpha_i_t&space;=&space;\frac{e_i_t}{\sum_{i&space;=1}^{n}(e_i_t)}" title="\large \alpha_i_t = \frac{e_i_t}{\sum_{i =1}^{n}(e_i_t)}" /></a>          
 
@@ -96,25 +93,21 @@ c_i is the context vector which is computed for each time step using attention s
 
 In Bahdanau’s paper, the alignment score  a() is parametrized by a feed-forward network, with a single hidden layer and this network is jointly trained with other parts of the model	
 		
-		a = V_a.tanh(W_a[h_i:s_t])   (fully connected layer , inputs are concatanated hidden state of bidirection encoder and 																							last hidden state of decoder)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;a&space;=&space;V_a.tanh(W_a[h_i:s_t])" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;a&space;=&space;V_a.tanh(W_a[h_i:s_t])" title="\large a = V_a.tanh(W_a[h_i:s_t])" /></a>
 
 (fully connected layer , inputs are concatanated hidden state of bidirection encoder and 																							last hidden state of decoder)
 
-		c_t = ∑ (α_it.h_i)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;c_t&space;=&space;\sum&space;(\alpha&space;_i_t.h_i)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;c_t&space;=&space;\sum&space;(\alpha&space;_i_t.h_i)" title="\large c_t = \sum (\alpha _i_t.h_i)" /></a>
 
 
 c_t (context vector ) is a weighted average of the elements in the source sentence, it denotes the sentence representation concerning the current element h_j(out) and the similarity score e_ij, context vector is then combined with the current hidden state and the last target token y_t-1 to generate the current token y_j
 
-		y_t = f(s_t-1 ,y_t-1 , c_t)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;y_t&space;=&space;f(s_t_{-1}&space;,y_t_{-1}&space;,&space;c_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;y_t&space;=&space;f(s_t_{-1}&space;,y_t_{-1}&space;,&space;c_t)" title="\large y_t = f(s_t_{-1} ,y_t_{-1} , c_t)" /></a>
 
 
-		where s_t-1 = f(h_t-1,y_t-1)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;s_t_{-1}&space;=&space;f(h_t_{-1},y_t_{-1})" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;s_t_{-1}&space;=&space;f(h_t_{-1},y_t_{-1})" title="\large s_t_{-1} = f(h_t_{-1},y_t_{-1})" /></a>
 
@@ -128,12 +121,10 @@ Attention score can be calculated in multiple ways, here are some popular attent
 
 The idea of a global attention model is to consider all hidden states of encoder while deriving the context vector c_t, here the score is determined by comparing the current hidden state with each source hidden state
 
-		e_it = score(h_t,h`_s)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;e_i_t&space;=&space;score(h_t,\bar{h}_s)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;e_i_t&space;=&space;score(h_t,\bar{h}_s)" title="\large e_i_t = score(h_t,\bar{h}_s)" /></a>
 
 
-		α_it = 	e_it/∑(e_it) 
 		
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha&space;_i_t&space;=\frac{e_i_t}{\sum&space;(e_i_t)}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\alpha&space;_i_t&space;=\frac{e_i_t}{\sum&space;(e_i_t)}" title="\large \alpha _i_t =\frac{e_i_t}{\sum (e_i_t)}" /></a>
 		
@@ -141,19 +132,19 @@ The idea of a global attention model is to consider all hidden states of encoder
 
 there are three ways of calculating scores 
 
-		score = h_t^T.h`_s   		   (dot)
+	  		  
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;score&space;=&space;h_t^T.\bar{h}_s" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;score&space;=&space;h_t^T.\bar{h}_s" title="\large score = h_t^T.\bar{h}_s" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;score&space;=&space;h_t^T.\bar{h}_s" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;score&space;=&space;h_t^T.\bar{h}_s" title="\large score = h_t^T.\bar{h}_s" /></a>              (dot)
 
 
-		score = h_t^T.W_a.h`_s 		   (general)
+	 		   
 	
-<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;score&space;=&space;h_t^T.W_a.\bar{h}_s" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;score&space;=&space;h_t^T.W_a.\bar{h}_s" title="\large score = h_t^T.W_a.\bar{h}_s" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;score&space;=&space;h_t^T.W_a.\bar{h}_s" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;score&space;=&space;h_t^T.W_a.\bar{h}_s" title="\large score = h_t^T.W_a.\bar{h}_s" /></a>    (general)
 
 
-		score = V_a.tanh(W_a[h_t:h_s]) (concat)
+	
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;score&space;=&space;V_a.tanh(W_a[h_t:h_s])" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;score&space;=&space;V_a.tanh(W_a[h_t:h_s])" title="\large score = V_a.tanh(W_a[h_t:h_s])" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;score&space;=&space;V_a.tanh(W_a[h_t:h_s])" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;score&space;=&space;V_a.tanh(W_a[h_t:h_s])" title="\large score = V_a.tanh(W_a[h_t:h_s])" /></a>  	 (concat)
 
 In spirit global attention is similar to bahdanau attention which we discussed before but there are certain differences between the two, while bahadanu using a concatenation of the forward and backward encoder stats with the previous hidden state of the target sequence, global attention simply uses the top hidden state of the encoder and decoder LSTM.
 
@@ -166,7 +157,6 @@ local attention model has two variants
 
 *monotonic alignment* - here the position vector p_t is set to p_t = t, assuming the source sentence and target sentence are monotonically aligned, the alignment is calculated as 
 
-		α_it = align(h_t,h`_t) = softmax(score(h_t,h`_t))
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;align(h_t,\bar{h}_t)&space;=&space;softmax(score(h_t,\bar{h}_t))" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;align(h_t,\bar{h}_t)&space;=&space;softmax(score(h_t,\bar{h}_t))" title="\large \alpha _i_t = align(h_t,\bar{h}_t) = softmax(score(h_t,\bar{h}_t))" /></a>
 
@@ -174,7 +164,6 @@ monotonic alignment is nearly the same as global attention, except that vector �
 
 *predictive alignment* - unlike monotonic alignment here we do not assume the value of p_t we predict using the following equation
 
-p_t = S.sigmoid(v_p^T.tanh(W_ph_t))
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;p_t&space;=&space;S.sigmoid(v_p^T.tanh(W_p.h_t))" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;p_t&space;=&space;S.sigmoid(v_p^T.tanh(W_p.h_t))" title="\large p_t = S.sigmoid(v_p^T.tanh(W_p.h_t))" /></a>
 
@@ -184,7 +173,6 @@ since we have added sigmoid the range of p_t is [0, S]
 
 the alignment is calculated as follows 
 
-		α_it = align(h_t,h`_t)*exp(-(s-p_t)^2/2sd^2)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;align(h_t,\bar{h}_t).e^{\frac{-(s-p_t)^2}{2sd^2}}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;align(h_t,\bar{h}_t).e^{\frac{-(s-p_t)^2}{2sd^2}}" title="\large \alpha _i_t = align(h_t,\bar{h}_t).e^{\frac{-(s-p_t)^2}{2sd^2}}" /></a>
 
@@ -207,31 +195,26 @@ the sentence representations are built by encoding the words in the sentence and
 
 At word level we use bidirectional GRU as RNN cells, this gives us word annotations which summarizes information form the backward as well as forward direction resulting in a variable h_it 
 
-		h_it = [h_it-> ;h_it <-]
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;h_i_t&space;=&space;[\overrightarrow{h_i_t}&space;;\overleftarrow{h_i_t}]" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;h_i_t&space;=&space;[\overrightarrow{h_i_t}&space;;\overleftarrow{h_i_t}]" title="\large h_i_t = [\overrightarrow{h_i_t} ;\overleftarrow{h_i_t}]" /></a>
 
 
 We then apply the attention mechanism as we did in before 
 		
-		e_it = score(h_it)	= tanh(W_w.h_it + b_w) 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;e_i_t&space;=&space;score(h_i_t)=&space;tanh(W_w.h_i_t&space;&plus;&space;b_w)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;e_i_t&space;=&space;score(h_i_t)=&space;tanh(W_w.h_i_t&space;&plus;&space;b_w)" title="\large e_i_t = score(h_i_t)= tanh(W_w.h_i_t + b_w)" /></a>
 
 we use tanh to keep the values between [-1 , 1]
 
-		α_it = softmax(tanh(W_w.h_it + b_w)) = exp(tanh(W_w.h_it + b_w)) / ∑(exp(tanh(W_w.h_it + b_w)))
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;softmax(tanh(W_w.h_i_t&space;&plus;&space;b_w))&space;=&space;e^{\frac{tanh(W_w.h_it&space;&plus;&space;b_w))}{\sum&space;e^{tanh(W_w.h_it&space;&plus;&space;b_w}}}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;\alpha&space;_i_t&space;=&space;softmax(tanh(W_w.h_i_t&space;&plus;&space;b_w))&space;=&space;e^{\frac{tanh(W_w.h_it&space;&plus;&space;b_w))}{\sum&space;e^{tanh(W_w.h_it&space;&plus;&space;b_w}}}" title="\large \alpha _i_t = softmax(tanh(W_w.h_i_t + b_w)) = e^{\frac{tanh(W_w.h_it + b_w))}{\sum e^{tanh(W_w.h_it + b_w}}}" /></a>
 
 
-		s_i = ∑ (α_it.h_it)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;s_i&space;=&space;\sum&space;(\alpha&space;_i_t.h_i_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;s_i&space;=&space;\sum&space;(\alpha&space;_i_t.h_i_t)" title="\large s_i = \sum (\alpha _i_t.h_i_t)" /></a>
 
 At the sentence level, we repeat the same procedure but with s_i as input to the bidirectional GRU cells
 
-		v = ∑ (α_i.h_i)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;v&space;=&space;\sum&space;(\alpha&space;_i.h_i)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;v&space;=&space;\sum&space;(\alpha&space;_i.h_i)" title="\large v = \sum (\alpha _i.h_i)" /></a>
 
