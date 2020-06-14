@@ -17,7 +17,7 @@ the encoder is an RNN( or an LSTM/RNN) that takes in the input sequence and conv
 the context vector is passed on to the decoder 
 the decoder decodes this context vector to give an output sequence
 
-[![Image]](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
+[![Image]("Shiprock, New Mexico by Beau Rogers")](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
 <sub>[image source](https://smerity.com/articles/2016/google_nmt_arch.html)</sub>
 
 
