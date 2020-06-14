@@ -20,7 +20,6 @@ the decoder decodes this context vector to give an output sequence
 
 ![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
 
-<center><sub>[image source](https://smerity.com/articles/2016/google_nmt_arch.html)</sub></center>
 
 
 #### Encoder 
@@ -231,3 +230,8 @@ At the sentence level, we repeat the same procedure but with s_i as input to the
 It would be best to discuss self-attention in the next post along with transformers
 	
 
+## Refrences
+
+[Attention ? Attention !](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html#definition)
+[NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](https://arxiv.org/pdf/1409.0473.pdf)
+[Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf)
