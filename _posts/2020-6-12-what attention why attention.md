@@ -18,7 +18,7 @@ the context vector is passed on to the decoder
 the decoder decodes this context vector to give an output sequence
 
 ![Image](https://smerity.com/media/images/articles/2016/gnmt_arch_1_enc_dec.svg)
-[image source] (https://smerity.com/articles/2016/google_nmt_arch.html)
+[image source](https://smerity.com/articles/2016/google_nmt_arch.html)
 
 
 #### Encoder 
@@ -29,7 +29,7 @@ the hidden states are computed as follows
     
 <a href="https://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\fn_phv&space;\large&space;h_t&space;=&space;f(W_h_h.h_t_{-1},W_h_x.x_t)" title="\large h_t = f(W_h_h.h_t_{-1},W_h_x.x_t)" /></a>                               
                        
-   W_hh are the weights associate with the previous input state <b>
+   W_hh are the weights associate with the previous input state <br>
    W_hx are the weights associated with the present input sequence
 
     
