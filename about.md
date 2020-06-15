@@ -15,4 +15,3 @@ I enjoy working with AI/ML algorithms and also computer networking , if you ever
 [akashchaudhari726@gmail.com](mailto:email@domain.com)
 
 
-PS :I am currently looking for job oppertunities in NLP , if you like my work do contact me 
