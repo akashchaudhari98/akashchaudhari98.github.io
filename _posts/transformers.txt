@@ -1,0 +1,12 @@
+Transformers
+ 
+In the previous post we looked at attention mechanism , in this post we will look at transformer models and how they have revolutionised NLP .
+
+Uptill now we have been working with RNN/LSTM , they were firmly instablished as SOTA apporches to sequence tasks such as translation, 
+language modeling, however this sequenctial nature prevents parallelization with in training examples which becomes critical at longer sequence
+longer sequence lengths as memory contraints limit batching across examples, although we did use attention mechanism which allowed us to model intra word
+dependencis without regard to distances in input/output sequences, they still are used in conjenture with a recurrent network and thus the fundamental 
+contraint of sequenctial computation still remains.
+
+Transformers on the other hand avoid recurrence and rely entitrely on attention mechanism to draw dependencis between input and output.
+
